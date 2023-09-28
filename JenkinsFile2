@@ -1,0 +1,62 @@
+pipeline {
+  agent {label 'node 2'}
+  tools {
+    maven "maven 3.9.3"
+  }
+  environment {
+    DEPLOY_ENV = 'production'
+    GIT_REPO_URL = 'https://github.com/obi810/web-app.git'
+  }
+  options{
+    timeout(time: 60, unit: "MINUTES")
+  }
+  stages{
+    stage('Clone from Github'){
+      steps{
+        git "${GIT_REPO_URL}"
+      }
+    }
+    stage('Build'){
+      steps{
+        sh 'mvn package'
+      }
+    }
+    stage('Testing'){
+      steps{
+        sh 'mvn sonar:sonar'
+      }
+    }
+     stage('deploy to nexus'){
+         steps{
+             sh 'mvn deploy'
+         }
+     }
+     stage('Approval'){
+      steps{
+        echo 'Seeking approval'
+        echo 'Sending email to team lead'
+        timeout(time: 5, unit: "DAYS"){
+          input message: 'Approve to deploy to production'
+        }
+      }
+    }
+     stage('deploy to tomcat'){
+         steps{
+             deploy adapters: [tomcat9(credentialsId: 'tomcat-id', path: '', url: 'http://54.206.69.231:5000/')], contextPath: null, war: 'target/*war'
+             echo 'deployment successful'
+             
+         }
+     }
+  }
+   post {
+       always{
+           echo "I am done"
+        }
+         failure{
+             echo "deployment failed"
+        }
+         success{
+             echo "deployment successful"
+         }
+   }
+}
