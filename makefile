@@ -3,7 +3,7 @@ BIN_DIR = bin
 all:clean,build
 
 build:
-     @echo "Building a project..."
+     @echo "Building this project..."
      mkdir -p $(BIN_DIR)
 
 clean:
