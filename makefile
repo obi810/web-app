@@ -7,7 +7,7 @@ build:
 	mkdir $(BIN_DIR)
 
 clean:
-	 @echo "Cleaning up..."
+       @echo "Cleaning up..."
 	rm -rf $(BIN_DIR)
 
 test:
