@@ -1,6 +1,6 @@
 BIN_DIR = bin
 
-all: clean build
+all: clean, build
 
 build:
 	@echo "Building this project.."
