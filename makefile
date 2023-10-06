@@ -1,4 +1,4 @@
-BIN_DIR = bin
+BIN_DIR = obi
 
 all:build copy
 
