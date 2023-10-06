@@ -11,4 +11,4 @@ clean:
 	rm -rf $(BIN_DIR)
 
 test:
-	@echo "Testing..."
+	@echo "Testing."
