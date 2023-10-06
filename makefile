@@ -8,7 +8,7 @@ build:
 
 copy:
 	@echo "copying a file.."
-	cp jenkinsfile $(BIN_DIR)
+	cp cohort9 $(BIN_DIR)
 
 done:
 	@echo "transfer done.."
