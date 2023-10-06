@@ -4,7 +4,7 @@ endef
 all:say_hello_pascal say_hello_Emmanuel
 
 say_hello_pascal:
-	@echo $(call say_hello,"pascal", "obi")	
+	@echo $(call say_hello,"pascal","obi")	
 
 say_hello_Emmanuel:
-	@echo $(call say_hello "Emmanuel", "obi")	
+	@echo $(call say_hello, "Emmanuel","obi")	
