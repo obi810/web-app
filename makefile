@@ -1,14 +1,14 @@
 BIN_DIR = bin
 
-all: clean, build
+all = build, clean 
 
 build:
-	@echo "Building this project.."
-	mkdir -p $(BIN_DIR)
+       @echo "building a project...."
+       mkdir "${BIN_DIR}"
 
 clean:
-	@echo "Cleaning up..."
-	rm -rf $(BIN_DIR)
+       @echo "cleaning up build"
+       rm -rf "${BIN_DIR}"
 
 test:
-	@echo "Testing..."
+      @echo "running test..."
