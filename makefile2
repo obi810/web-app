@@ -1,6 +1,6 @@
 define say_hello
-	@echo "hello $(1) $(2)!"
-	endef
+	@echo "hello $(1) $(2!)"
+endef
 all:say_hello_pascal say_hello_Emmanuel
 
 say_hello_pascal:
